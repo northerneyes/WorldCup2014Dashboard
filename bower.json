@@ -1,0 +1,13 @@
+{
+  "name": "World cup dashboard",
+  "description": "A World Cup Dashboard",
+  "version": "1.0.0",
+  "homepage": "https://bitbucket.com//wc-dashboard",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-bootstrap": "0.12.x",
+    "bootstrap": "3.1.x",
+    "angular-route": "1.2.x"
+  }
+}
