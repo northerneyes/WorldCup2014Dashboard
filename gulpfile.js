@@ -1,10 +1,13 @@
+'use strict';
+
 var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     clean = require('gulp-clean'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    ngmin = require('gulp-ngmin');
+    ngmin = require('gulp-ngmin'),
+    browserSync = require('browser-sync');
 
 //clean
 gulp.task('clean', function() {
@@ -14,31 +17,41 @@ gulp.task('clean', function() {
         .pipe(clean());
 });
 
+gulp.task('browserSync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist/"
+        }
+    });
+});
+
+
+
 //Css
 gulp.task('css', function() {
     gulp.src("bower_components/bootstrap/dist/css/bootstrap.min.css")
         .pipe(concat('vendor.css'))
-        .pipe(gulp.dest('./dist/assets/css/'))
+        .pipe(gulp.dest('./dist/assets/css/'));
 
     gulp.src("app/assets/css/**/*.css")
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('./dist/assets/css/'))
+        .pipe(gulp.dest('./dist/assets/css/'));
 });
 
 //JSHint
 gulp.task('lint', function() {
-      var  src = [
-            'app/**/*module*.js',
-            'app/components/**/*.js'
-        ];
+    var src = [
+        'app/**/*module*.js',
+        'app/components/**/*.js'
+    ];
     gulp.src(src)
         .pipe(jshint())
-        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('default'));
 });
 
 //Js task
 gulp.task('js', function() {
-    var  src = [
+    var src = [
         'app/**/*module*.js',
         'app/components/**/*.js'
     ];
@@ -49,7 +62,7 @@ gulp.task('js', function() {
         .pipe(ngmin())
         .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./dist/assets/js/'))
+        .pipe(gulp.dest('./dist/assets/js/'));
 });
 
 // vendor js files
@@ -66,14 +79,17 @@ gulp.task('vendor-js', function() {
 
 //Copy html
 gulp.task('views', function() {
-    return gulp.src('./app/**/*.html', {
-            base: './app'
+    gulp.src('./app/index.html')
+        .pipe(gulp.dest('./dist/'));
+
+    gulp.src('./app/**/*.html', {
+            base: './app/components/'
         })
         .pipe(gulp.dest('./dist/'));
 });
 
 //watch all of this
-gulp.task('watch', ['lint', 'views', 'css', 'vendor-js', 'js'], function() {
+gulp.task('watch', ['lint', 'views', 'css', 'vendor-js', 'js', 'browserSync'], function() {
     gulp.watch('./app/**/*.html', ['views']);
     gulp.watch('./app/assets/css/**/*.css', ['css']);
     gulp.watch('./app/**/*.js', ['lint', 'js']);
