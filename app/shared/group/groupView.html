@@ -1,16 +1,18 @@
 <table class="table table-bordered table-hover table-striped">
     <tr>
-        <th>Id</th>
-        <th>country</th>
-        <th>fifa_code</th>
-        <th>points</th>
-        <th>goal_differential</th>
+        <!-- <th>Id</th> -->
+        <th></th>
+        <!-- <th>fifa_code</th> -->
+        <th>P</th>
+        <th><strong>GD</strong></th>
+        <th><strong>Pts</strong></th>
     </tr>
     <tr ng-repeat="item in teams">
-        <td>{{item.team.id}}</td>
+        <!-- <td>{{item.team.id}}</td> -->
         <td>{{item.team.country}}</td>
-        <td>{{item.team.fifa_code}}</td>
-        <td>{{item.team.points}}</td>
+        <td>3</td>
+        <!-- <td>{{item.team.fifa_code}}</td> -->
         <td>{{item.team.goal_differential}}</td>
+        <td><strong>{{item.team.points}}</strong></td>
     </tr>
 </table>

@@ -11,6 +11,28 @@ var gulp = require('gulp'),
     sass = require('gulp-sass'),
     reload = browserSync.reload;
 
+var config = {
+    vendor_styles: [
+        "bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "bower_components/angular-chart.js/dist/angular-chart.css"
+    ],
+    vendor_scripts: [
+        'node_modules/underscore/underscore-min.js',
+        './bower_components/angular/angular.min.js',
+        './bower_components/angular-route/angular-route.min.js',
+        './bower_components/angular-bootstrap/ui-bootstrap.min.js',
+        './bower_components/Chart.js/Chart.min.js',
+        './bower_components/angular-chart.js/dist/angular-chart.min.js'
+    ],
+    src_css:"app/assets/css/**/*.sass",
+    src_views: './app/**/*.html',
+    src_scripts: './app/**/*.js',
+    dest_css:'./dist/assets/css/',
+    dest_scripts: './dist/assets/js/'
+
+};
+
+
 //clean
 gulp.task('clean', function() {
     return gulp.src('./dist/*', {
@@ -32,14 +54,14 @@ gulp.task('browserSync', function() {
 
 //Css
 gulp.task('css', function() {
-    gulp.src("bower_components/bootstrap/dist/css/bootstrap.min.css")
+    gulp.src(config.vendor_styles)
         .pipe(concat('vendor.css'))
-        .pipe(gulp.dest('./dist/assets/css/'));
+        .pipe(gulp.dest(config.dest_css));
 
-    gulp.src("app/assets/css/**/*.sass")
+    gulp.src(config.src_css)
         .pipe(sass())
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('./dist/assets/css/'))
+        .pipe(gulp.dest(config.dest_css))
         .pipe(reload({
             stream: true
         }));
@@ -47,10 +69,8 @@ gulp.task('css', function() {
 
 //JSHint
 gulp.task('lint', function() {
-    var src = [
-        'app/**/*.js'
-    ];
-    gulp.src(src)
+
+    gulp.src(config.src_scripts)
         .pipe(jshint())
         .pipe(jshint.reporter('default'));
 });
@@ -68,7 +88,7 @@ gulp.task('js', function() {
         .pipe(ngAnnotate())
         // .pipe(uglify()) //production only!
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./dist/assets/js/'))
+        .pipe(gulp.dest(config.dest_scripts))
         .pipe(reload({
             stream: true
         }));
@@ -76,21 +96,17 @@ gulp.task('js', function() {
 
 // vendor js files
 gulp.task('vendor-js', function() {
-    gulp.src([
-            './bower_components/angular/angular.min.js',
-            './bower_components/angular-route/angular-route.min.js',
-            './bower_components/angular-bootstrap/ui-bootstrap.min.js'
-        ])
+    gulp.src(config.vendor_scripts)
         .pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./dist/assets/js/'));
+        .pipe(gulp.dest(config.dest_scripts));
 
 });
 
 //Copy html
 gulp.task('views', function() {
-    gulp.src('./app/**/*.html')
+    gulp.src(config.src_views)
         .pipe(gulp.dest('./dist/'))
         .pipe(reload({
             stream: true
@@ -99,9 +115,9 @@ gulp.task('views', function() {
 
 //watch all of this
 gulp.task('watch', ['lint', 'views', 'css', 'vendor-js', 'js', 'browserSync'], function() {
-    gulp.watch('./app/**/*.html', ['views']);
-    gulp.watch('./app/assets/css/**/*.sass', ['css']);
-    gulp.watch('./app/**/*.js', ['lint', 'js']);
+    gulp.watch(config.src_views, ['views']);
+    gulp.watch(config.src_css, ['css']);
+    gulp.watch(config.src_scripts, ['lint', 'js']);
 });
 
 gulp.task('default', ['watch']);

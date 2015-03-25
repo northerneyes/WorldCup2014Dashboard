@@ -3,15 +3,29 @@
 		<h1 class="page-header">Groups</h1>
 	</div>
 </div>
-<div class="row">
+<!-- <div class="row"> -->
 	<div  ng-repeat="item in groups">
-		<div class="col-lg-4">
+		<div class="col-lg-6">
 			<div class="panel panel-green">
 				<div class="panel-heading">
 					<h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>{{item.group.letter}}</h3>
 				</div>
 				<div class="panel-body">
-					<group teams="item.group.teams"></group>
+					
+					<div class="row">
+						<div class="row-same-height">						
+						
+							<div class="col-lg-8 col-xs-height col-full-height">
+								<group teams="item.group.teams"></group>
+							</div>
+
+							<div class="col-lg-4 col-xs-height col-full-height">
+								<canvas id="polar-area" class="chart chart-pie" data="item.group.data"
+								labels="item.group.labels"></canvas>
+							</div>
+
+						</div>
+					</div>	
 				</div>
 			</div>
 		</div>
