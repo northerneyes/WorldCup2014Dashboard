@@ -2,17 +2,19 @@
     <tr>
         <!-- <th>Id</th> -->
         <th></th>
+        <th></th>
         <!-- <th>fifa_code</th> -->
-        <th>P</th>
-        <th><strong>GD</strong></th>
-        <th><strong>Pts</strong></th>
+        <th class="text-center">P</th>
+        <th class="text-center"><strong>GD</strong></th>
+        <th class="text-center"><strong>Pts</strong></th>
     </tr>
     <tr ng-repeat="item in teams">
         <!-- <td>{{item.team.id}}</td> -->
+        <td class="text-center"><img src="http://img.fifa.com/imgml/flags/m/{{item.team.fifa_code}}.gif" alt="item.team.country" title="item.team.country" height="22" ></img></td>
         <td>{{item.team.country}}</td>
-        <td>3</td>
+        <td class="text-center">3</td>
         <!-- <td>{{item.team.fifa_code}}</td> -->
-        <td>{{item.team.goal_differential}}</td>
-        <td><strong>{{item.team.points}}</strong></td>
+        <td class="text-center">{{item.team.goal_differential}}</td>
+        <td class="text-center"><strong>{{item.team.points}}</strong></td>
     </tr>
 </table>

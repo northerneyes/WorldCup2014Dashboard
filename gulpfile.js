@@ -13,8 +13,9 @@ var gulp = require('gulp'),
 
 var config = {
     vendor_styles: [
-        "bower_components/bootstrap/dist/css/bootstrap.min.css",
-        "bower_components/angular-chart.js/dist/angular-chart.css"
+        "./bower_components/bootstrap/dist/css/bootstrap.min.css",
+        "./bower_components/angular-chart.js/dist/angular-chart.css",
+        "./bower_components/ngActivityIndicator/css/ngActivityIndicator.min.css"
     ],
     vendor_scripts: [
         'node_modules/underscore/underscore-min.js',
@@ -22,7 +23,8 @@ var config = {
         './bower_components/angular-route/angular-route.min.js',
         './bower_components/angular-bootstrap/ui-bootstrap.min.js',
         './bower_components/Chart.js/Chart.min.js',
-        './bower_components/angular-chart.js/dist/angular-chart.min.js'
+        './bower_components/angular-chart.js/dist/angular-chart.min.js',
+        './bower_components/ngActivityIndicator/ngActivityIndicator.min.js'
     ],
     src_css:"app/assets/css/**/*.sass",
     src_views: './app/**/*.html',

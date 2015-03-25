@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('worldcup.home', ['ngRoute', "chart.js"])
+angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/home', {
@@ -9,7 +9,8 @@ angular.module('worldcup.home', ['ngRoute', "chart.js"])
 	});
 }])
 
-.controller('HomeCtrl', function($scope, worldCupStatistics, _) {
+.controller('HomeCtrl', function($scope, worldCupStatistics, _, $activityIndicator) {
+	$activityIndicator.startAnimating();
 	worldCupStatistics.groupResults().then(function(groups) {
 		_.each(groups, function(item) {
 			//collect data for charts
@@ -24,11 +25,21 @@ angular.module('worldcup.home', ['ngRoute', "chart.js"])
 		});
 
 		$scope.groups = groups;
+		$activityIndicator.stopAnimating();
 	});
-	$scope.groups = [];
 
-	$scope.split = function(index, length, attempts) {
-		var ret = attempts.slice(index * length, (index * length) + length);
+	//preload
+	$scope.groups = _.map(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], function(letter){
+		return {
+			group: {
+				letter: letter,
+				teams:[]
+			}
+		};
+	});
+
+	$scope.split = function(index, length, groups) {
+		var ret = groups.slice(index * length, (index * length) + length);
 		return ret;
 	};
 });

@@ -3,16 +3,18 @@
 		<h1 class="page-header">Groups</h1>
 	</div>
 </div>
-<!-- <div class="row"> -->
+
+
+<div class="row">
 	<div  ng-repeat="item in groups">
 		<div class="col-lg-6">
 			<div class="panel panel-green">
 				<div class="panel-heading">
-					<h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>{{item.group.letter}}</h3>
+					<h3 class="panel-title"><i class="fa fa-long-arrow-right"></i>Group {{item.group.letter}}</h3>
 				</div>
 				<div class="panel-body">
-					
-					<div class="row">
+					<div ng-activity-indicator="CircledGrey"></div>
+					<div ng-show="!AILoading" class="row">
 						<div class="row-same-height">						
 						
 							<div class="col-lg-8 col-xs-height col-full-height">
