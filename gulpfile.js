@@ -6,8 +6,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     sourcemaps = require('gulp-sourcemaps'),
     uglify = require('gulp-uglify'),
-    ngmin = require('gulp-ngmin'),
-    browserSync = require('browser-sync');
+    ngAnnotate = require('gulp-ng-annotate'),
+    browserSync = require('browser-sync'),
+    reload = browserSync.reload;
 
 //clean
 gulp.task('clean', function() {
@@ -35,7 +36,10 @@ gulp.task('css', function() {
 
     gulp.src("app/assets/css/**/*.css")
         .pipe(concat('app.css'))
-        .pipe(gulp.dest('./dist/assets/css/'));
+        .pipe(gulp.dest('./dist/assets/css/'))
+        .pipe(reload({
+            stream: true
+        }));
 });
 
 //JSHint
@@ -53,16 +57,20 @@ gulp.task('lint', function() {
 gulp.task('js', function() {
     var src = [
         'app/**/*module*.js',
-        'app/components/**/*.js'
+        'app/components/**/*.js',
+        'app/shared/**/*.js'
     ];
 
     gulp.src(src)
         .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
-        .pipe(ngmin())
+        .pipe(ngAnnotate())
         .pipe(uglify())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('./dist/assets/js/'));
+        .pipe(gulp.dest('./dist/assets/js/'))
+        .pipe(reload({
+            stream: true
+        }));
 });
 
 // vendor js files
@@ -80,12 +88,27 @@ gulp.task('vendor-js', function() {
 //Copy html
 gulp.task('views', function() {
     gulp.src('./app/index.html')
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/'))
+        .pipe(reload({
+            stream: true
+        }));
 
-    gulp.src('./app/**/*.html', {
+    gulp.src('./app/components/**/*.html', {
             base: './app/components/'
         })
-        .pipe(gulp.dest('./dist/'));
+        .pipe(gulp.dest('./dist/'))
+        .pipe(reload({
+            stream: true
+        }));
+
+    gulp.src('./app/shared/**/*.html', {
+            base: './app/shared/'
+        })
+        .pipe(gulp.dest('./dist/'))
+        .pipe(reload({
+            stream: true
+        }));
+
 });
 
 //watch all of this

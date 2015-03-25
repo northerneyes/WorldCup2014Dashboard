@@ -9,6 +9,6 @@ angular.module('worldcup.home', ['ngRoute'])
 	});
 }])
 
-.controller('HomeCtrl', [function() {
-
-}]);
+.controller('HomeCtrl', function($scope) {
+	$scope.rating = 42;
+});
