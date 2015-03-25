@@ -5,12 +5,18 @@ $white: #fff;
 $light: #999;
 
 //panels
-$green_panel: #5cb85c;
-$green_panel_hover: #3d8b3d;
-$red_panel: #d9534f;
-$red_panel_hover: #b52b27;
-$yellow_panel: #f0ad4e;
-$yellow_panel_hover: #df8a13;
+
+
+$red: #d9534f;
+$pink: #FD817B;
+$yellow: #f0ad4e;
+$green: #5cb85c;
+$blue: #338CCE;
+$purple: #553451;
+$carmine: #F53242;
+$orange: #FE874F;
+
+$panel-collection: ('red' : $red, 'pink' : $pink, 'yellow': $yellow, 'green': $green,'blue':$blue, 'purple' :$purple,'carmine': $carmine,'orange' : $orange);
 
 body {
 	margin-top: 100px;
@@ -89,49 +95,23 @@ body {
 	}
 }
 
-.panel-green {
-	border-color: $green_panel;
-	.panel-heading {
-		border-color: $green_panel;
-		color: $white;
-		background-color: $green_panel;
-	}
-	a {
-		color: $green_panel;
-		&:hover {
-			color: $green_panel_hover;
+@each $name, $color in $panel-collection {
+	.panel-#{$name} {
+		border-color: $color;
+		.panel-heading {
+			border-color: $color;
+			color: $white;
+			background-color: $color;
+		}
+		a {
+			color: $color;
+			&:hover {
+				color: darken($color, 50%);
+			}
 		}
 	}
 }
 
-.panel-red {
-	border-color: $red_panel;
-	.panel-heading {
-		border-color: $red_panel;
-		color: $white;
-		background-color: $red_panel;
-	}
-	a {
-		color: $red_panel;
-		&:hover {
-			color: $red_panel_hover;
-		}
-	}
-}
-.panel-yellow {
-	border-color: $yellow_panel;
-	.panel-heading {
-		border-color: $yellow_panel;
-		color: $white;
-		background-color: $yellow_panel;
-	}
-	a {
-		color: $yellow_panel;
-		&:hover {
-			color: $yellow_panel_hover;
-		}
-	}
-}
 
 .col-xs-height {
     display: table-cell;

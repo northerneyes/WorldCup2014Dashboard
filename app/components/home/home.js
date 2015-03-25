@@ -11,6 +11,17 @@ angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 
 .controller('HomeCtrl', function($scope, worldCupStatistics, _, $activityIndicator) {
 	$activityIndicator.startAnimating();
+	var colors = {
+		'A': 'red',
+		'B': 'pink',
+		'C': 'yellow',
+		'D': 'green',
+		'E': 'blue',
+		'F': 'purple',
+		'G': 'carmine',
+		'H': 'orange'
+	};
+
 	worldCupStatistics.groupResults().then(function(groups) {
 		_.each(groups, function(item) {
 			//collect data for charts
@@ -22,24 +33,25 @@ angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 			});
 			item.group.data = _.pluck(item.group.chart, 'value');
 			item.group.labels = _.pluck(item.group.chart, 'label');
+			item.group.color = colors[item.group.letter]; 
 		});
 
 		$scope.groups = groups;
 		$activityIndicator.stopAnimating();
 	});
 
+
+	
+
 	//preload
 	$scope.groups = _.map(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], function(letter){
 		return {
 			group: {
 				letter: letter,
+				color: colors[letter],
 				teams:[]
 			}
 		};
 	});
 
-	$scope.split = function(index, length, groups) {
-		var ret = groups.slice(index * length, (index * length) + length);
-		return ret;
-	};
 });
