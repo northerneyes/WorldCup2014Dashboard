@@ -45,8 +45,7 @@ gulp.task('css', function() {
 //JSHint
 gulp.task('lint', function() {
     var src = [
-        'app/**/*module*.js',
-        'app/components/**/*.js'
+        'app/**/*.js'
     ];
     gulp.src(src)
         .pipe(jshint())
@@ -57,8 +56,7 @@ gulp.task('lint', function() {
 gulp.task('js', function() {
     var src = [
         'app/**/*module*.js',
-        'app/components/**/*.js',
-        'app/shared/**/*.js'
+        'app/**/*.js'
     ];
 
     gulp.src(src)
@@ -87,28 +85,11 @@ gulp.task('vendor-js', function() {
 
 //Copy html
 gulp.task('views', function() {
-    gulp.src('./app/index.html')
+    gulp.src('./app/**/*.html')
         .pipe(gulp.dest('./dist/'))
         .pipe(reload({
             stream: true
         }));
-
-    gulp.src('./app/components/**/*.html', {
-            base: './app/components/'
-        })
-        .pipe(gulp.dest('./dist/'))
-        .pipe(reload({
-            stream: true
-        }));
-
-    gulp.src('./app/shared/**/*.html', {
-            base: './app/shared/'
-        })
-        .pipe(gulp.dest('./dist/'))
-        .pipe(reload({
-            stream: true
-        }));
-
 });
 
 //watch all of this

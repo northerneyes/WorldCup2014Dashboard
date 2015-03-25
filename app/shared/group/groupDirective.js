@@ -8,7 +8,7 @@ angular.module('worldcup.group.groupDirective', [])
         scope: {
             value: '=ngModel'
         },
-        templateUrl: 'group/groupView.html',
+        templateUrl: 'shared/group/groupView.html',
         link: function(scope, iElement, iAttrs) {
             scope.increment = function() {
                 scope.value++;
