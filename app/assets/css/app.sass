@@ -1,0 +1,134 @@
+//colors
+$dark: #222;
+$black: #000;
+$white: #fff;
+$light: #999;
+
+//panels
+$green_panel: #5cb85c;
+$green_panel_hover: #3d8b3d;
+$red_panel: #d9534f;
+$red_panel_hover: #b52b27;
+$yellow_panel: #f0ad4e;
+$yellow_panel_hover: #df8a13;
+
+body {
+	margin-top: 100px;
+	background-color: $dark;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+
+@media(min-width:768px) {
+	.side-nav {
+		position: fixed;
+		top: 51px;
+		left: 225px;
+		width: 225px;
+		margin-left: -225px;
+		border: none;
+		//Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+		border-radius: 0;
+		overflow-y: auto;
+		background-color: $dark;
+		li a {
+			&:hover {
+				outline: none;
+				background-color: $black !important;
+			}
+			&:focus {
+				outline: none;
+				background-color: $black !important;
+			}
+		}
+	}
+	.side-nav>li>a {
+		width: 225px;
+	}
+}
+#wrapper {
+	padding-left: 0;
+}
+#page-wrapper {
+	width: 100%;
+	padding: 0;
+	background-color: $white;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+.huge {
+	font-size: 50px;
+	line-height: normal;
+	font-size: 40px;
+}
+.side-nav>li>ul {
+	padding: 0;
+}
+
+.side-nav>li>ul>li>a {
+	display: block;
+	padding: 10px 15px 10px 38px;
+	text-decoration: none;
+	color: $light;
+	&:hover {
+		color: $white;
+	}
+}
+
+.panel-green {
+	border-color: $green_panel;
+	.panel-heading {
+		border-color: $green_panel;
+		color: $white;
+		background-color: $green_panel;
+	}
+	a {
+		color: $green_panel;
+		&:hover {
+			color: $green_panel_hover;
+		}
+	}
+}
+
+.panel-red {
+	border-color: $red_panel;
+	.panel-heading {
+		border-color: $red_panel;
+		color: $white;
+		background-color: $red_panel;
+	}
+	a {
+		color: $red_panel;
+		&:hover {
+			color: $red_panel_hover;
+		}
+	}
+}
+.panel-yellow {
+	border-color: $yellow_panel;
+	.panel-heading {
+		border-color: $yellow_panel;
+		color: $white;
+		background-color: $yellow_panel;
+	}
+	a {
+		color: $yellow_panel;
+		&:hover {
+			color: $yellow_panel_hover;
+		}
+	}
+}

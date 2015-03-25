@@ -8,6 +8,7 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync'),
+    sass = require('gulp-sass'),
     reload = browserSync.reload;
 
 //clean
@@ -35,7 +36,8 @@ gulp.task('css', function() {
         .pipe(concat('vendor.css'))
         .pipe(gulp.dest('./dist/assets/css/'));
 
-    gulp.src("app/assets/css/**/*.css")
+    gulp.src("app/assets/css/**/*.sass")
+        .pipe(sass())
         .pipe(concat('app.css'))
         .pipe(gulp.dest('./dist/assets/css/'))
         .pipe(reload({
@@ -98,7 +100,7 @@ gulp.task('views', function() {
 //watch all of this
 gulp.task('watch', ['lint', 'views', 'css', 'vendor-js', 'js', 'browserSync'], function() {
     gulp.watch('./app/**/*.html', ['views']);
-    gulp.watch('./app/assets/css/**/*.css', ['css']);
+    gulp.watch('./app/assets/css/**/*.sass', ['css']);
     gulp.watch('./app/**/*.js', ['lint', 'js']);
 });
 
