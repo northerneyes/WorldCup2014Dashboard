@@ -4,7 +4,8 @@
 angular.module('worldcup', [
 	'ngRoute',
 	'worldcup.home',
-	'worldcup.group'
+	'worldcup.group',
+	'worldcup.providers'
 ]).
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({

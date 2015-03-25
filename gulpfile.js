@@ -20,6 +20,7 @@ gulp.task('clean', function() {
 
 gulp.task('browserSync', function() {
     browserSync.init({
+        open: false,
         server: {
             baseDir: "./dist/"
         }
@@ -63,7 +64,7 @@ gulp.task('js', function() {
         .pipe(sourcemaps.init())
         .pipe(concat('app.js'))
         .pipe(ngAnnotate())
-        .pipe(uglify())
+        // .pipe(uglify()) //production only!
         .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist/assets/js/'))
         .pipe(reload({
@@ -78,7 +79,9 @@ gulp.task('vendor-js', function() {
             './bower_components/angular-route/angular-route.min.js',
             './bower_components/angular-bootstrap/ui-bootstrap.min.js'
         ])
+        .pipe(sourcemaps.init())
         .pipe(concat('vendor.js'))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./dist/assets/js/'));
 
 });

@@ -6,17 +6,11 @@ angular.module('worldcup.group.groupDirective', [])
     return {
         restrict: 'AE',
         scope: {
-            value: '=ngModel'
+            teams: '='
         },
         templateUrl: 'shared/group/groupView.html',
         link: function(scope, iElement, iAttrs) {
-            scope.increment = function() {
-                scope.value++;
-            };
-
-            scope.decrement = function() {
-                scope.value--;
-            };
+            
         }
     };
 });

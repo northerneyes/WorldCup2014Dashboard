@@ -1,3 +1,16 @@
-<button ng-click="decrement()">-</button>
-<div>{{ value }}</div>
-<button ng-click="increment()">+</button>
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th>Id</th>
+        <th>country</th>
+        <th>fifa_code</th>
+        <th>points</th>
+        <th>goal_differential</th>
+    </tr>
+    <tr ng-repeat="item in teams">
+        <td>{{item.team.id}}</td>
+        <td>{{item.team.country}}</td>
+        <td>{{item.team.fifa_code}}</td>
+        <td>{{item.team.points}}</td>
+        <td>{{item.team.goal_differential}}</td>
+    </tr>
+</table>
