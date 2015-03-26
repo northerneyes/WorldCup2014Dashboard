@@ -28,6 +28,7 @@ var config = {
     ],
     src_css:"app/assets/css/**/*.sass",
     src_views: './app/**/*.html',
+    src_img: './app/assets/img/*',
     src_scripts: './app/**/*.js',
     dest_css:'./dist/assets/css/',
     dest_scripts: './dist/assets/js/'
@@ -115,9 +116,19 @@ gulp.task('views', function() {
         }));
 });
 
+//Copy images
+gulp.task('img', function() {
+    gulp.src(config.src_img)
+        .pipe(gulp.dest('./dist/assets/img/'))
+        .pipe(reload({
+            stream: true
+        }));
+});
+
 //watch all of this
-gulp.task('watch', ['lint', 'views', 'css', 'vendor-js', 'js', 'browserSync'], function() {
+gulp.task('watch', ['lint', 'views', 'css', 'img', 'vendor-js', 'js', 'browserSync'], function() {
     gulp.watch(config.src_views, ['views']);
+    gulp.watch(config.src_img, ['img']);
     gulp.watch(config.src_css, ['css']);
     gulp.watch(config.src_scripts, ['lint', 'js']);
 });

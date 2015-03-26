@@ -18,9 +18,7 @@ angular.module('worldcup.scrollFader.scrollFaderDirective', [])
 					var el = angular.element(value);
 					elView = wh - (el.prop('offsetTop') - dt + 200);
 					if (elView > 0) { // Top of DIV above bottom of window.
-						
 						opacity = dt/el[0].offsetHeight*1.5;
-						console.log(opacity);
 						if (opacity < 1) // Bottom of DIV below top of window.
 							el.css('opacity', opacity);
 					}

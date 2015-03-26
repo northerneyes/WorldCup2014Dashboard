@@ -17,64 +17,36 @@ $orange: #FE874F;
 $panel-collection: ('red' : $red, 'pink' : $pink, 'yellow': $yellow, 'green': $green,'blue':$blue, 'purple' :$purple,'carmine': $carmine,'orange' : $orange);
 
 //header
-$header-height: 300px;
-$logo-padding: 200px;
+$header-height: 440px;
+$logo-padding: $header-height - 200;
 
 body {
 	margin-top: 100px;
 	background-color: white;
 }
 
-// .wide {
-//   width:100%;
-//   height:$header-height;
-//   // background: $light;
-//   // background-image:url('/assets/example/bg_8.jpg');
-//   // background-size:cover;
-//     // width: 100%;
-//   // height: 100%;
-//   background: url('https://dl.dropboxusercontent.com/u/5049340/office%402x.png') center center no-repeat;
-//   background-size: cover;
-//   -webkit-box-shadow: 0px 3px 5px rgba(100, 100, 100, 0.49);
-//    -moz-box-shadow:    0px 3px 5px rgba(100, 100, 100, 0.49);
-// 	box-shadow:         0px 3px 5px rgba(100, 100, 100, 0.49);
+.logo {
+  color:#fff;
+  font-weight:800;
+  font-size:14pt;
+  padding-top:$logo-padding;
+  text-align:center;
+  background-image: url('../img/world-cup.png');
+  height: 400px;
+  margin-top: 20px;
+}
 
-//   &:before {
-//     	content: '';
-// 		position: absolute;
-// 		top: 0;
-// 		right: 0;
-// 		bottom: 0;
-// 		left: 0;
-// 		background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
-// 		opacity: .6;
-// 		height: $header-height
-//   }
-// }
-
-// .wide img {
-//   width:100%;
-// }
-
-// .logo {
-//   color:#fff;
-//   font-weight:800;
-//   font-size:14pt;
-//   padding-top:$logo-padding;
-//   text-align:center;
-// }
-
-// .line {
-//   padding-top:$logo-padding;
-//   white-space:no-wrap;
-//   overflow:hidden;
-//   text-align:center;
-// }
+.line {
+  padding-top:$logo-padding;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}
 
 .blurImg{
 	position: relative;
   	width: 100%;
-  	height: 440px;
+  	height: $header-height;
   	z-index: -1;
   	top: 0;
   	left: 0;
@@ -85,27 +57,38 @@ body {
   	div{
   		position: fixed;
 		width: 100%;
-		height: 440px;
+		height: $header-height;
 		background-repeat: no-repeat;
 		-webkit-background-size: cover;
 		-moz-background-size: cover;
 		background-size: cover;
 		background-position: center center;
+  		  	  &:before {
+    	content: '';
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background-image: linear-gradient(to bottom right,#002f4b,#dc4225);
+		opacity: .6;
+		height: $header-height
+  }
   	}
 
   	.regular{
-  		background-image: url('https://d262ilb51hltx0.cloudfront.net/fit/c/1600/1280/gradv/29/81/60/darken/25/1*4ncz3hLxmL8E_bUh-0z62w.jpeg');
+  		background-image: url('../img/background.jpg');
   	}
 
   	.blurred{
   		opacity: 0; 
-  		background-image: url(https://d262ilb51hltx0.cloudfront.net/fit/c/1600/1280/gradv/29/81/40/darken/50/blur/50/1*4ncz3hLxmL8E_bUh-0z62w.jpeg);
+  		background-image: url('../img/background-blur.jpg');
   	}
 
   	.regular, .blurred {
 		position:absolute;
 		width:100%;
-		min-height: 440px;
+		min-height: $header-height;
 
 		-webkit-transform: translate3d(0,0,0);
 	}
