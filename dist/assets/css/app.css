@@ -1,0 +1,308 @@
+@font-face {
+  font-family: brazil;
+  src: url('../fonts/Brasil World Cup 2014 font.otf'); }
+
+body {
+  background-color: white; }
+
+.logo {
+  color: #fff;
+  font-weight: 800;
+  font-size: 14pt;
+  margin-top: -170px;
+  text-align: center;
+  background-image: url('../img/world-cup.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 400px; }
+
+@media (max-width: 1500px) {
+  .logo {
+    background-image: url('../img/world-cup-small.png'); } }
+
+.line {
+  padding-top: 40px;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 200;
+  font-size: 7.4em;
+  color: #FEFE00;
+  font-family: brazil; }
+
+.blurImg {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49); }
+  .blurImg div {
+    position: fixed;
+    width: 100%;
+    height: 440px;
+    background-size: cover;
+    background: no-repeat center center; }
+    .blurImg div:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-image: -webkit-linear-gradient(left, #002f4b, #dc4225);
+      background-image: linear-gradient(to right, #002f4b, #dc4225);
+      opacity: .6;
+      height: 440px; }
+  .blurImg .regular {
+    background-image: url('../img/background.jpg'); }
+  .blurImg .blurred {
+    opacity: 0;
+    background-image: url('../img/background-blur.jpg'); }
+  .blurImg .regular, .blurImg .blurred {
+    position: absolute;
+    width: 100%;
+    min-height: 440px;
+    -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0); }
+
+header {
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 0 20px; }
+  header > div {
+    margin: 0 auto;
+    padding-top: 150px;
+    height: 380px;
+    text-align: center;
+    color: White; }
+    header > div a {
+      font-size: 0.8em;
+      letter-spacing: 0.08em;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 30px;
+      padding: 7px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 2em;
+      -webkit-transition: all 0.3s ease;
+              transition: all 0.3s ease; }
+      header > div a:hover {
+        background: #fff;
+        color: Gray; }
+  header p {
+    font-size: 1.5em;
+    margin-bottom: 0.7em;
+    font-family: Times New Roman; }
+
+nav {
+  max-width: 600px;
+  margin: 0 auto;
+  height: 60px;
+  border-top: 1px rgba(255, 255, 255, 0.35) solid; }
+  nav ul {
+    padding-left: 0; }
+    nav ul li {
+      display: inline-block;
+      margin-right: 20px; }
+      nav ul li a {
+        font-weight: 800;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: rgba(255, 255, 255, 0.5);
+        -webkit-transition: color 0.3s linear;
+                transition: color 0.3s linear;
+        line-height: 60px;
+        display: block; }
+        nav ul li a.active {
+          box-shadow: 0px -1px 0 #fff;
+          color: #fff; }
+        nav ul li a:hover {
+          color: #fff; }
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0; }
+
+  to {
+    opacity: 1; } }
+
+.panel-red {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #d9534f; }
+  .panel-red .panel-heading {
+    border-color: #d9534f;
+    color: #fff;
+    background-color: #d9534f; }
+  .panel-red .panel-body {
+    padding: 0px; }
+  .panel-red a {
+    color: #d9534f; }
+    .panel-red a:hover {
+      color: #220807; }
+
+.panel-pink {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #FD817B; }
+  .panel-pink .panel-heading {
+    border-color: #FD817B;
+    color: #fff;
+    background-color: #FD817B; }
+  .panel-pink .panel-body {
+    padding: 0px; }
+  .panel-pink a {
+    color: #FD817B; }
+    .panel-pink a:hover {
+      color: #770702; }
+
+.panel-yellow {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #f0ad4e; }
+  .panel-yellow .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e; }
+  .panel-yellow .panel-body {
+    padding: 0px; }
+  .panel-yellow a {
+    color: #f0ad4e; }
+    .panel-yellow a:hover {
+      color: #3a2405; }
+
+.panel-green {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #5cb85c; }
+  .panel-green .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c; }
+  .panel-green .panel-body {
+    padding: 0px; }
+  .panel-green a {
+    color: #5cb85c; }
+    .panel-green a:hover {
+      color: #060f06; }
+
+.panel-blue {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #338CCE; }
+  .panel-blue .panel-heading {
+    border-color: #338CCE;
+    color: #fff;
+    background-color: #338CCE; }
+  .panel-blue .panel-body {
+    padding: 0px; }
+  .panel-blue a {
+    color: #338CCE; }
+    .panel-blue a:hover {
+      color: #000102; }
+
+.panel-purple {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #553451; }
+  .panel-purple .panel-heading {
+    border-color: #553451;
+    color: #fff;
+    background-color: #553451; }
+  .panel-purple .panel-body {
+    padding: 0px; }
+  .panel-purple a {
+    color: #553451; }
+    .panel-purple a:hover {
+      color: black; }
+
+.panel-carmine {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #F53242; }
+  .panel-carmine .panel-heading {
+    border-color: #F53242;
+    color: #fff;
+    background-color: #F53242; }
+  .panel-carmine .panel-body {
+    padding: 0px; }
+  .panel-carmine a {
+    color: #F53242; }
+    .panel-carmine a:hover {
+      color: #260205; }
+
+.panel-orange {
+  -webkit-animation: fadeIn ease-in 1;
+          animation: fadeIn ease-in 1;
+  -webkit-animation-fill-mode: forwards;
+          animation-fill-mode: forwards;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+  border-color: #FE874F; }
+  .panel-orange .panel-heading {
+    border-color: #FE874F;
+    color: #fff;
+    background-color: #FE874F; }
+  .panel-orange .panel-body {
+    padding: 0px; }
+  .panel-orange a {
+    color: #FE874F; }
+    .panel-orange a:hover {
+      color: #4e1900; }
+
+.col-xs-height {
+  display: table-cell;
+  float: none !important; }
+
+.col-full-height {
+  height: 100%;
+  vertical-align: middle; }
+
+.ai-circled {
+  margin: 75px auto; }

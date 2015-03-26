@@ -1,0 +1,20 @@
+<table class="table table-bordered table-hover table-striped" >
+    <tr>
+       
+        <th><!-- flag --></th>
+        <th><!-- country --></th>
+       
+        <th class="text-center">P</th>
+        <th class="text-center"><strong>GD</strong></th>
+        <th class="text-center"><strong>Pts</strong></th>
+    </tr>
+    <tr ng-repeat="item in teams">
+        
+        <td class="text-center"><img src="http://img.fifa.com/imgml/flags/m/{{item.team.fifa_code}}.gif" alt="item.team.country" title="item.team.country" height="22" ></img></td>
+        <td>{{item.team.country}}</td>
+        <td class="text-center">3</td>
+        
+        <td class="text-center">{{item.team.goal_differential}}</td>
+        <td class="text-center"><strong>{{item.team.points}}</strong></td>
+    </tr>
+</table>
