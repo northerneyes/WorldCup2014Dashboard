@@ -1,7 +1,7 @@
 {
-  "name": "WorldCupDashboard",
+  "name": "WorldCup2014Dashboard",
   "version": "1.0.0",
-  "description": "A World Cup Dashboard",
+  "description": "A World Cup 2014 Dashboard",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
