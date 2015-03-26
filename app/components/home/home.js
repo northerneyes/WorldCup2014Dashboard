@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
+angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator', 'worldcup.providers'])
 
 .config(['$routeProvider', function($routeProvider) {
 	$routeProvider.when('/home', {
@@ -9,20 +9,10 @@ angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 	});
 }])
 
-.controller('HomeCtrl', function($scope, worldCupStatistics, _, $activityIndicator) {
+.controller('HomeCtrl', function($scope, worldCupProvider, _, $activityIndicator) {
 	$activityIndicator.startAnimating();
-	var colors = {
-		'A': 'red',
-		'B': 'pink',
-		'C': 'yellow',
-		'D': 'green',
-		'E': 'blue',
-		'F': 'purple',
-		'G': 'carmine',
-		'H': 'orange'
-	};
-
-	worldCupStatistics.groupResults().then(function(groups) {
+	
+	worldCupProvider.groupResults().then(function(groups) {
 		_.each(groups, function(item) {
 			//collect data for charts
 			item.group.chart = _.map(item.group.teams, function(p) {
@@ -33,7 +23,9 @@ angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 			});
 			item.group.data = _.pluck(item.group.chart, 'value');
 			item.group.labels = _.pluck(item.group.chart, 'label');
-			item.group.color = colors[item.group.letter];
+			item.group.color = _.find(worldCupProvider.groups(), function(p) {
+				return p.letter === item.group.letter;
+			}).color;
 		});
 
 		$scope.groups = groups;
@@ -41,13 +33,12 @@ angular.module('worldcup.home', ['ngRoute', 'chart.js', 'ngActivityIndicator'])
 	});
 
 
-
 	//preload
-	$scope.groups = _.map(['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], function(letter) {
+	$scope.groups = _.map(worldCupProvider.groups(), function(group) {
 		return {
 			group: {
-				letter: letter,
-				color: colors[letter],
+				letter: group.letter,
+				color: group.color,
 				teams: []
 			}
 		};

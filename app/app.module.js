@@ -5,7 +5,6 @@ angular.module('worldcup', [
 	'ngRoute',
 	'worldcup.home',
 	'worldcup.group',
-	'worldcup.providers',
 	'worldcup.utils',
 	'worldcup.scrollFader'
 ]).

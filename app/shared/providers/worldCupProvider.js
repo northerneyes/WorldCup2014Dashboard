@@ -1,11 +1,39 @@
 'use strict';
 
-angular.module('worldcup.providers.worldCupStatistics', [])
+angular.module('worldcup.providers.worldCupProvider', [])
 
-.service("worldCupStatistics",
+.service("worldCupProvider",
 	function($http, $q) {
 		return ({
-			groupResults: groupResults
+			groupResults: groupResults,
+			groups: function() {
+				return [{
+					letter: 'A',
+					color: 'red'
+				}, {
+					letter: 'B',
+					color: 'pink'
+				}, {
+					letter: 'C',
+					color: 'yellow'
+				}, {
+					letter: 'D',
+					color: 'green'
+				}, {
+					letter: 'E',
+					color: 'blue'
+				}, {
+					letter: 'F',
+					color: 'purple'
+				}, {
+					letter: 'G',
+					color: 'carmine'
+				}, {
+					letter: 'H',
+					color: 'orange'
+				}];
+
+			}
 		});
 
 		function groupResults() {
