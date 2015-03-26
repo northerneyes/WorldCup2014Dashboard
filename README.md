@@ -5,6 +5,13 @@ A World Cup 2014 Brazil Dashboard. Use AngularJS library.
 ## [Demo](http://northerneyes.github.io/WorldCup2014Dashboard)
 A demo is available on the Github Pages [here](http://northerneyes.github.io/WorldCup2014Dashboard)
 
+## Setup
+````
+npm install
+bower install
+gulp
+````
+
 ## App Structure
 An app structure of this project is modularized into very specific functions. 
 

@@ -48,7 +48,7 @@ gulp.task('clean', function() {
 
 gulp.task('browserSync', function() {
     browserSync.init({
-        open: false,
+        open: true,
         server: {
             baseDir: "./dist/"
         }
