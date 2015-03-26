@@ -6,7 +6,8 @@ angular.module('worldcup', [
 	'worldcup.home',
 	'worldcup.group',
 	'worldcup.providers',
-	'worldcup.utils'
+	'worldcup.utils',
+	'worldcup.scrollFader'
 ]).
 config(['$routeProvider', function($routeProvider) {
 	$routeProvider.otherwise({

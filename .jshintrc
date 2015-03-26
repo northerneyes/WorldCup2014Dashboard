@@ -10,6 +10,7 @@
     "module": false,
     "inject": false,
     "window": true,
+    "document": true,
     "require": true
   }
 }
