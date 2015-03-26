@@ -14,17 +14,17 @@
 				</div>
 				<div class="panel-body">
 					<div ng-activity-indicator="CircledGrey"></div>
-					<div ng-show="!AILoading" class="row">
+					<div ng-show="!AILoading">
 						<!-- <div class="row-same-height">						 -->
 						
-							<div class="col-lg-8 col-xs-height col-full-height">
+							<!-- <div class="col-lg-8 col-xs-height col-full-height"> -->
 								<group teams="item.group.teams"></group>
-							</div>
+							<!-- </div> -->
 
-							<div class="col-lg-4 col-xs-height col-full-height">
+							<!-- <div class="col-lg-2 col-xs-height col-full-height"> -->
 								<canvas id="polar-area" class="chart chart-pie" data="item.group.data"
-								labels="item.group.labels"></canvas>
-							</div>
+								labels="item.group.labels" legend="true"></canvas>
+							<!-- </div> -->
 
 						<!-- </div> -->
 					</div>	

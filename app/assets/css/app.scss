@@ -26,9 +26,12 @@ $logo-padding: $header-height - 200;
 }
 
 body {
-    margin-top: 100px;
+    // margin-top: 100px;
     background-color: white;
 }
+
+
+
 
 .logo {
     color: #fff;
@@ -38,7 +41,15 @@ body {
     margin-top: -170px;
     text-align: center;
     background-image: url('../img/world-cup.png');
+    background-repeat: no-repeat;
+    background-position: center;
     height: 400px;
+}
+
+@media(max-width: 1500px) {
+   .logo{
+     background-image: url('../img/world-cup-small.png');
+   }
 }
 
 .line {
@@ -171,73 +182,6 @@ nav {
     }
 }
 
-@media(min-width: 768px) {
-    body {
-        margin-top: 0;
-    }
-}
-
-@media(min-width: 768px) {
-    .side-nav {
-        position: fixed;
-        top: 51px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
-        border: none;
-        //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
-        border-radius: 0;
-        overflow-y: auto;
-        background-color: $dark;
-        li a {
-            &:hover {
-                outline: none;
-                background-color: $black !important;
-            }
-            &:focus {
-                outline: none;
-                background-color: $black !important;
-            }
-        }
-    }
-    .side-nav > li > a {
-        width: 225px;
-    }
-}
-
-#wrapper {
-    padding-left: 0;
-}
-
-#page-wrapper {
-    width: 100%;
-    padding: 0;
-    background-color: $white;
-}
-
-@media(min-width: 768px) {
-    #wrapper {
-        // padding-left: 225px;
-    }
-
-    #page-wrapper {
-        padding: 10px;
-    }
-}
-
-.side-nav > li > ul {
-    padding: 0;
-}
-
-.side-nav > li > ul > li > a {
-    display: block;
-    padding: 10px 15px 10px 38px;
-    text-decoration: none;
-    color: $light;
-    &:hover {
-        color: $white;
-    }
-}
 
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 
@@ -256,11 +200,14 @@ nav {
         @include fade-in(0.5s);
         @include card();
         border-color: $color;
-    
+        
         .panel-heading {
             border-color: $color;
             color: $white;
             background-color: $color;
+        }
+        .panel-body{
+            padding: 0px;
         }
         a {
             color: $color;
