@@ -1,5 +1,5 @@
 'use strict';
 
 angular.module('worldcup.providers', [
-  'worldcup.providers.worldCupStatistics'
+	'worldcup.providers.worldCupStatistics'
 ]);

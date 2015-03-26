@@ -1,0 +1,276 @@
+//colors
+$dark: #222;
+$black: #000;
+$white: #fff;
+$light: #999;
+
+//panels
+$red: #d9534f;
+$pink: #FD817B;
+$yellow: #f0ad4e;
+$green: #5cb85c;
+$blue: #338CCE;
+$purple: #553451;
+$carmine: #F53242;
+$orange: #FE874F;
+
+$panel-collection: ('red' : $red, 'pink' : $pink, 'yellow': $yellow, 'green': $green, 'blue':$blue, 'purple' :$purple, 'carmine': $carmine, 'orange' : $orange);
+
+//header
+$header-height: 440px;
+$logo-padding: $header-height - 200;
+
+@font-face {
+    font-family: brazil;
+    src: url('../fonts/Brasil World Cup 2014 font.otf');
+}
+
+body {
+    margin-top: 100px;
+    background-color: white;
+}
+
+.logo {
+    color: #fff;
+    font-weight: 800;
+    font-size: 14pt;
+    // padding-top:$logo-padding;
+    margin-top: -170px;
+    text-align: center;
+    background-image: url('../img/world-cup.png');
+    height: 400px;
+}
+
+.line {
+    padding-top: 40px;
+    overflow: hidden;
+    text-align: center;
+
+    font-weight: 200;
+    font-size: 7.4em;
+    color: #FEFE00;
+    font-family: brazil;
+}
+
+.blurImg {
+    position: relative;
+    width: 100%;
+    height: $header-height;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    box-shadow: 0 3px 5px rgba(100, 100, 100, 0.49);
+
+    div {
+        position: fixed;
+        width: 100%;
+        height: $header-height;
+        background-size: cover;
+        background: no-repeat center center;
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-image: linear-gradient(to bottom right, #002f4b, #dc4225);
+            opacity: .6;
+            height: $header-height
+        }
+    }
+
+    .regular {
+        background-image: url('../img/background.jpg');
+    }
+
+    .blurred {
+        opacity: 0;
+        background-image: url('../img/background-blur.jpg');
+    }
+
+    .regular, .blurred {
+        position: absolute;
+        width: 100%;
+        min-height: $header-height;
+
+        transform: translate3d(0, 0, 0);
+    }
+}
+
+// header
+header {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 0 20px;
+
+    > div {
+        margin: 0 auto;
+        padding-top: 150px;
+        height: 380px;
+        text-align: center;
+        color: White;
+        a {
+            font-size: 0.8em;
+            letter-spacing: 0.08em;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 30px;
+            padding: 7px 14px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 2em;
+            transition: all 0.3s ease;
+
+            &:hover {
+                background: #fff;
+                color: Gray;
+            }
+        }
+    }
+
+    p {
+        font-size: 1.5em;
+        margin-bottom: 0.7em;
+        font-family: Times New Roman;
+    }
+}
+
+//navigation
+nav {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 60px;
+    border-top: 1px rgba(255, 255, 255, 0.35) solid;
+
+    ul {
+        padding-left: 0;
+        li {
+            display: inline-block;
+            margin-right: 20px;
+            a {
+                font-weight: 800;
+                font-size: 11px;
+                text-transform: uppercase;
+                letter-spacing: 0.2em;
+                color: rgba(255, 255, 255, 0.5);
+                transition: color 0.3s linear;
+                line-height: 60px;
+                display: block;
+
+                &.active {
+                    box-shadow: 0px -1px 0 #fff;
+                    color: #fff;
+                }
+                &:hover {
+                    color: #fff;
+                }
+            }
+        }
+
+    }
+}
+
+@media(min-width: 768px) {
+    body {
+        margin-top: 0;
+    }
+}
+
+@media(min-width: 768px) {
+    .side-nav {
+        position: fixed;
+        top: 51px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        //Instead of the line below you could use @includeborder-radius($radius, $vertical-radius)
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: $dark;
+        li a {
+            &:hover {
+                outline: none;
+                background-color: $black !important;
+            }
+            &:focus {
+                outline: none;
+                background-color: $black !important;
+            }
+        }
+    }
+    .side-nav > li > a {
+        width: 225px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: $white;
+}
+
+@media(min-width: 768px) {
+    #wrapper {
+        // padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+.side-nav > li > ul {
+    padding: 0;
+}
+
+.side-nav > li > ul > li > a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    color: $light;
+    &:hover {
+        color: $white;
+    }
+}
+
+@each $name, $color in $panel-collection {
+    .panel-#{$name} {
+        border-color: $color;
+        .panel-heading {
+            border-color: $color;
+            color: $white;
+            background-color: $color;
+        }
+        a {
+            color: $color;
+            &:hover {
+                color: darken($color, 50%);
+            }
+        }
+    }
+}
+
+.col-xs-height {
+    display: table-cell;
+    float: none !important;
+}
+
+.row-same-height {
+    // display: table;
+    // width: 100%;
+}
+
+.col-full-height {
+    height: 100%;
+    vertical-align: middle;
+}
+
+.ai-circled {
+    margin: 75px auto;
+}

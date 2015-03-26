@@ -9,6 +9,7 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     browserSync = require('browser-sync'),
     sass = require('gulp-sass'),
+    autoprefixer = require('gulp-autoprefixer'),
     reload = browserSync.reload;
 
 var config = {
@@ -26,9 +27,10 @@ var config = {
         './bower_components/angular-chart.js/dist/angular-chart.min.js',
         './bower_components/ngActivityIndicator/ngActivityIndicator.min.js'
     ],
-    src_css:"app/assets/css/**/*.sass",
+    src_css:"app/assets/css/**/*.scss",
     src_views: './app/**/*.html',
     src_img: './app/assets/img/*',
+    src_fonts: './app/assets/fonts/*',
     src_scripts: './app/**/*.js',
     dest_css:'./dist/assets/css/',
     dest_scripts: './dist/assets/js/'
@@ -64,6 +66,7 @@ gulp.task('css', function() {
     gulp.src(config.src_css)
         .pipe(sass())
         .pipe(concat('app.css'))
+        .pipe(autoprefixer())
         .pipe(gulp.dest(config.dest_css))
         .pipe(reload({
             stream: true
@@ -125,8 +128,18 @@ gulp.task('img', function() {
         }));
 });
 
+//Copy images
+gulp.task('fonts', function() {
+    gulp.src(config.src_fonts)
+        .pipe(gulp.dest('./dist/assets/fonts/'))
+        .pipe(reload({
+            stream: true
+        }));
+});
+
 //watch all of this
-gulp.task('watch', ['lint', 'views', 'css', 'img', 'vendor-js', 'js', 'browserSync'], function() {
+gulp.task('watch', ['lint', 'views', 'css', 'img', 'fonts', 'vendor-js', 'js', 'browserSync'], function() {
+    gulp.watch(config.src_fonts, ['fonts']);
     gulp.watch(config.src_views, ['views']);
     gulp.watch(config.src_img, ['img']);
     gulp.watch(config.src_css, ['css']);
